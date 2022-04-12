@@ -3,4 +3,6 @@ body{
 }
 .red{
     color: red;
+button{
+    background-color: aquamarine;
 }
