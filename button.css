@@ -7,3 +7,10 @@ body{
 button{
     background-color: aquamarine;
 }
+.head{ 
+    display: block;
+    width: 20 px;  
+    height: 20 px;  
+    background-color: #000000; 
+    margin-bottom: 20 px;  
+    } 
