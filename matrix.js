@@ -6,9 +6,10 @@ var root = {
       },
       rainbowSpeed: 0.5,
       rainbow: true,
-      matrixspeed: 50
+      matrixspeed: 50,
+      reset: false
   };
-  
+  var reloading;
   var c = document.getElementById("c");
   var ctx = c.getContext("2d");
   
@@ -37,7 +38,11 @@ var root = {
   function draw() {
       // Get the BG color based on the current time i.e. rgb(hh, mm, ss)
       // translucent BG to show trail
-  
+      if (root.reset){
+        clearInterval(reloading);
+        root.reset=false;
+        reload();
+      };
       ctx.fillStyle = "rgba(0,0,0, 0.05)";
       ctx.fillRect(0, 0, c.width, c.height);
   
@@ -73,10 +78,11 @@ var root = {
                     drops[i] = 0;
       }
   }
-  
-  setInterval(draw, root.matrixspeed);
-  
-  
+  function reload(){
+  reloading = setInterval(draw, root.matrixspeed);
+  }
+  reload();
+
   function livelyPropertyListener(name, val)
   {
     switch(name) {
@@ -148,6 +154,7 @@ item.onmousedown = function(e) {
    
    // Сброс при отпускании кнопки мышки 
    document.onmouseup = function(){
+      root.reset=true;
       document.onmousemove = null;
       document.onmouseup = null;
    }
