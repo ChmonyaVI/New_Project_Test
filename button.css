@@ -7,7 +7,7 @@ body{
 button{
     background-color: aquamarine;
 }
-header{ 
+.head{ 
     display: block;
     width: 20 px;  
     height: 20 px;  
