@@ -3,13 +3,13 @@ var button = document.getElementById("button");
 var timer;
 var number = 0;
 
-button.addEventListener('click',function(){
+button.addEventListener('click', function () {
     clearInterval(timer);
 });
-function starttimer(){
-    timer=setInterval(plusone,1000);
+function starttimer() {
+    timer = setInterval(plusone, 1000);
 };
-function plusone(){
+function plusone() {
     text.innerHTML = number++;
 };
 starttimer();
