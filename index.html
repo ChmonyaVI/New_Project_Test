@@ -3,30 +3,51 @@
 
     <head>
         <meta charset="UTF-8" />
-        <title>React in One Minute</title>
+        <title>Пример React</title>
+
         <!-- Load React. -->
-        <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-        <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+        <!-- <script src="https://unpkg.com/react@18/umd/react.development.js"></script> -->
+        <script src="./react_lib/react.development.js"></script>
+        <!-- <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script> -->
+        <script src="./react_lib/react-dom.development.js"></script>
         <!-- load jsx -->
-        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-        <!-- Load our React component. -->
+        <!-- <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>  -->
+        <script src="./react_lib/babel.min.js"></script>
+
+        <!--подключаем стили-->
+        <link rel="stylesheet" href="./css/style.css">
     </head>
 
     <body>
-        <!-- кнопка на js -->
-        <div id="like_button_container"></div>
+        <div class="wrapper">
+            <div class="block">
+                <div id="like_button_container"></div><!-- кнопка на js -->
+                <div id="h1_text"></div><!-- текст на jsx -->
+                <div id="butt"></div><!-- кнопка на jsx -->
+            </div>
+            <div id="root"></div>
+        </div>
         <script src="./js/like_button.js"></script>
-
-        <!-- текст на jsx -->
-        <div id="root"></div>
-
-        <!-- кнопка на jsx -->
-        <div id="butt"></div>
-
-        <script type="text/babel" src="./js/script.js" />
-
-
-
+        <!-- для скриптов на jsx нужно прописывать этот тип text/babel иначе не будет корректно работать -->
+        <script type="text/babel" src="./js/script.js"></script>
+        <script type="text/babel" src="./js/tic_tac_toe.js"></script>
+        <script type="text/babel">
+            window.addEventListener('mousedown', function (e) {
+                document.body.classList.add('mouse-navigation');
+                document.body.classList.remove('kbd-navigation');
+            });
+            window.addEventListener('keydown', function (e) {
+                if (e.keyCode === 9) {
+                    document.body.classList.add('kbd-navigation');
+                    document.body.classList.remove('mouse-navigation');
+                }
+            });
+            window.addEventListener('click', function (e) {
+                if (e.target.tagName === 'A' && e.target.getAttribute('href') === '#') {
+                    e.preventDefault();
+                }
+            });
+        </script>
     </body>
 
 </html>

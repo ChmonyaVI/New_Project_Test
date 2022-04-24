@@ -1,11 +1,15 @@
-// Это текст для div с id root
-function MyApp() {
+// Это текст для div с id root (все на jsx)
+function Text_H1() {
    return <h1>Hello, world!</h1>;
 }
-const container = document.getElementById('root');
-const root = ReactDOM.createRoot(container);
-root.render(<MyApp />);
-
+// const container = document.getElementById('h1_text');
+// const root = ReactDOM.createRoot(container);
+// root.render(<Text_H1 />);
+//если одна функция render сломается (не найдет id) то дальше код не выполниться
+ReactDOM.render(
+   <Text_H1 />,
+   document.getElementById('h1_text')
+);
 // Это кнопка с id butt
 class Toggle extends React.Component {
    constructor(props) {
@@ -20,11 +24,19 @@ class Toggle extends React.Component {
       }));
    }
    render() {
-      return (
-         <button onClick={this.handleClick}>
-            {this.state.isToggleOn ? 'ON' : 'OFF'}
-         </button>
-      );
+      if (this.state.isToggleOn) {
+         return (
+            <button class="red" onClick={this.handleClick} >
+               red
+            </button>
+         );
+      } else {
+         return (
+            <button class="blue" onClick={this.handleClick} >
+               blue
+            </button>
+         );
+      }
    }
 }
 ReactDOM.render(
